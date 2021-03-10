@@ -19,3 +19,14 @@ $retina-dpi: 144dpi;
 $retina-dppx: 1.5dppx;
 
 $index: 1.38871;
+
+/* region animation timing */
+$animation-duration-base: 0.3s;
+
+$animation-delay-base: 0.1s;
+/* endregion animation timing */
+
+/* region page header */
+$page-header-menu-item-active-stripe-duration: $animation-duration-base;
+$page-header-menu-item-active-stripe-delay: $animation-delay-base;
+/* endregion page header */
