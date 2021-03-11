@@ -46,7 +46,7 @@ module.exports = {
           {
             loader: "sass-loader",
             options: { sourceMap: true },
-          }
+          },
         ],
       },
       {
@@ -61,6 +61,9 @@ module.exports = {
               sourceMap: true,
               url: false
             },
+          },
+          {
+            loader: "postcss-loader",
           },
         ],
       },
@@ -92,7 +95,7 @@ module.exports = {
       template: 'source/index.html',
     }),
     new MiniCssExtractPlugin({
-      filename: 'css/style.min.css',
+      filename: 'css/style.css',
       chunkFilename: "[id].css"
     }),
     new CssoWebpackPlugin({
