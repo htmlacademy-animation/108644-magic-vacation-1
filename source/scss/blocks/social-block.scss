@@ -3,8 +3,20 @@
 
   &:hover {
     .social-block__list {
-      opacity: 1;
-      pointer-events: auto;
+      display: block;
+
+      & .social-block__item {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+
+        &:nth-child(2) {
+          transition-delay: $social-block-toggler-active-list-item-delay;
+        }
+
+        &:nth-child(3) {
+          transition-delay: $social-block-toggler-active-list-item-delay * 2;
+        }
+      }
     }
   }
 }
@@ -15,8 +27,26 @@
   display: block;
   width: 4rem;
   height: 4rem;
-  color: $c-dark;
   border-radius: 50%;
+  color: $c-dark;
+  transition: color $social-block-toggler-hover-duration;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 50%;
+    background-color: $c-light;
+    transition: background-color $social-block-toggler-hover-duration ease-out,
+      box-shadow $social-block-toggler-hover-duration ease-out;
+    will-change: transform;
+    transform: scale(0);
+    transform-origin: center;
+    animation: social-block-toggler-grow $social-block-toggler-grow-animation-duration $social-block-toggler-grow-animation-delay ease-out forwards;
+  }
 
   @media (max-width: $tablet) and (orientation: portrait) {
     display: none;
@@ -24,17 +54,6 @@
 
   @media (max-width: $mobile) and (orientation: landscape) {
     display: none;
-  }
-
-  &::before {
-    @include center;
-    content: "";
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    background-color: $c-light;
-    border: 2px solid $c-light;
-    z-index: -1;
   }
 
   svg {
@@ -47,24 +66,38 @@
   &:hover,
   .social-block--active & {
     color: $c-purple;
+  }
 
+  &:hover {
     &::before {
-      width: 112.5%;
-      height: 112.5%;
+      box-shadow: 0 0 0 2px $c-light;
     }
   }
 
   &:focus {
-    color: $c-purple;
+    color: $c-light;
     outline: none;
 
     &::before {
-      border-color: $c-purple;
+      background-color: $c-purple;
+      box-shadow: 0 0 0 0 $c-purple;
+    }
+
+    &:hover {
+      &::before {
+        background-color: $c-purple;
+        box-shadow: 0 0 0 2px $c-purple;
+      }
     }
 
     & + .social-block__list {
       opacity: 1;
       pointer-events: auto;
+
+      & .social-block__item {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   }
 
@@ -75,8 +108,9 @@
     &::before {
       width: 100%;
       height: 100%;
-      background-color: $c-purple;
       border-color: $c-purple;
+      background-color: $c-purple;
+      box-shadow: 0 0 0 2px $c-purple;
     }
   }
 }
@@ -97,8 +131,8 @@
   @media (max-width: $tablet) and (orientation: portrait) {
     position: static;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     margin-top: 0;
     opacity: 1;
     pointer-events: auto;
@@ -107,8 +141,8 @@
   @media (max-width: $mobile) and (orientation: landscape) {
     position: static;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     margin-top: 0;
     opacity: 1;
     pointer-events: auto;
@@ -117,9 +151,9 @@
   &::before {
     content: "";
     position: absolute;
+    right: 0;
     bottom: 100%;
     left: 0;
-    right: 0;
     height: 1.5rem;
 
     @media (min-width: $stop-scaling) {
@@ -160,14 +194,22 @@
   }
 }
 
+.social-block__item {
+  opacity: 0;
+  transition: opacity $social-block-toggler-active-list-item-duration ease-out,
+    transform $social-block-toggler-active-list-item-duration ease-out;
+  transform: translate3d(0, 25%, 0);
+}
+
 .social-block__link {
   position: relative;
   display: block;
   width: 4rem;
   height: 4rem;
-  color: $c-light;
   border: 2px solid transparent;
   border-radius: 50%;
+  color: $c-light;
+  transition: color $social-block-toggler-active-list-item-duration;
 
   @media (min-width: $stop-scaling) {
     width: 40px;
@@ -175,13 +217,13 @@
   }
 
   @media (max-width: $tablet) and (orientation: portrait) {
-    color: $c-light;
     background-color: $c-dark;
+    color: $c-light;
   }
 
   @media (max-width: $mobile) and (orientation: landscape) {
-    color: $c-light;
     background-color: $c-dark;
+    color: $c-light;
   }
 
   &:hover {
@@ -189,17 +231,17 @@
   }
 
   &:focus {
-    color: $c-purple;
-    background-color: $c-light;
     border-color: $c-purple;
+    background-color: $c-light;
+    color: $c-purple;
     outline: none;
   }
 
   &:active,
   &:active:focus {
-    color: $c-purple;
-    background-color: $c-light;
     border-color: $c-light;
+    background-color: $c-light;
+    color: $c-purple;
   }
 
   svg {
@@ -240,5 +282,20 @@
         height: 10px;
       }
     }
+  }
+}
+
+@keyframes social-block-toggler-grow {
+  0% {
+    opacity: 1;
+    transform: scale(0);
+  }
+
+  80% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
   }
 }

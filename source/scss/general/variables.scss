@@ -21,12 +21,33 @@ $retina-dppx: 1.5dppx;
 $index: 1.38871;
 
 /* region animation timing */
+$animation-duration-xxs: 0.1s;
+$animation-duration-xs: 0.15s;
 $animation-duration-base: 0.3s;
+$animation-duration-xl: 0.5s;
 
 $animation-delay-base: 0.1s;
+$animation-delay-xl: 0.3s;
+$animation-delay-xxl: 0.5s;
 /* endregion animation timing */
 
 /* region page header */
 $page-header-menu-item-active-stripe-duration: $animation-duration-base;
 $page-header-menu-item-active-stripe-delay: $animation-delay-base;
+
+$page-header-menu-animation-duration: $animation-duration-xl;
+$page-header-menu-animation-delay: $animation-delay-xl;
 /* endregion page header */
+
+/* region social block */
+$social-block-toggler-grow-animation-duration: $animation-duration-base;
+$social-block-toggler-grow-animation-delay: $animation-delay-xxl;
+
+$social-block-toggler-hover-duration: $animation-duration-base;
+
+$social-block-toggler-active-list-item-duration: $animation-duration-base;
+$social-block-toggler-active-list-item-delay: $animation-delay-base;
+
+$social-block-toggler-active-list-link-duration: $animation-duration-xxs;
+$social-block-toggler-active-list-link-delay: $animation-delay-base;
+/* endregion social block */

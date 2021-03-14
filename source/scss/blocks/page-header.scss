@@ -171,12 +171,14 @@
 }
 
 .page-header__menu {
-  font-family: $font-alt;
-  text-transform: uppercase;
+  color: $c-light;
   font-weight: 400;
   font-size: 1.2rem;
+  font-family: $font-alt;
   line-height: 1.0418;
-  color: $c-light;
+  text-transform: uppercase;
+  opacity: 0;
+  animation: fade-in $page-header-menu-animation-duration $page-header-menu-animation-delay ease-out forwards;
 
   @media (min-width: $stop-scaling) {
     font-size: 12px;
