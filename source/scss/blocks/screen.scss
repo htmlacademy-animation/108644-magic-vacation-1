@@ -309,6 +309,21 @@
   position: relative;
   background-color: $c-dark;
 
+  &.screen--hidden {
+    & .form__field {
+      max-width: 0;
+    }
+  }
+
+  & .form__field {
+    margin-left: auto;
+    animation: screen--game-active-form-field $screen-game-form-field-animtaion ease-in-out;
+  }
+
+  & .form__button {
+    flex-grow: 0;
+  }
+
   &::before {
     content: "";
     position: absolute;
@@ -353,4 +368,14 @@
 
 .screen--rules {
   background-color: $c-dark;
+}
+
+@keyframes screen--game-active-form-field {
+  0% {
+    max-width: 0;
+  }
+
+  100% {
+    max-width: 100%;
+  }
 }

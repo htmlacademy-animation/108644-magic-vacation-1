@@ -53,10 +53,10 @@ $social-block-toggler-active-list-link-duration: $animation-duration-xxs;
 $social-block-toggler-active-list-link-delay: $animation-delay-base;
 /* endregion social block */
 
-/* region page header */
+/* region intro message */
 $intro-message-animation-duration: $animation-duration-xxl;
 $intro-message-animation-delay: $animation-delay-xxl;
-/* endregion page header */
+/* endregion intro message */
 
 /* region slider item */
 $slider-item-active-text-transition-duration: $animation-duration-base;
@@ -67,3 +67,7 @@ $slider-item-next-text-transition-delay: $animation-delay-xxl;
 
 $slider-item-text-transition-duration: $animation-duration-xxs;
 /* endregion slider item */
+
+/* region screen game */
+$screen-game-form-field-animtaion: $animation-duration-xl;
+/* endregion screen game */
