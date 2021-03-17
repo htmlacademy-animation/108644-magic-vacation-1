@@ -178,7 +178,7 @@
   line-height: 1.0418;
   text-transform: uppercase;
   opacity: 0;
-  animation: page-header-menu-fade-in $page-header-menu-animation-duration $page-header-menu-animation-delay ease-out forwards;
+  animation: page-header-menu-fade-in $page-header-menu-animation-duration $page-header-menu-animation-delay forwards;
 
   @media (min-width: $stop-scaling) {
     font-size: 12px;

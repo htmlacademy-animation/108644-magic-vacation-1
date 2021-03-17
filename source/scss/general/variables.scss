@@ -57,3 +57,13 @@ $social-block-toggler-active-list-link-delay: $animation-delay-base;
 $intro-message-animation-duration: $animation-duration-xxl;
 $intro-message-animation-delay: $animation-delay-xxl;
 /* endregion page header */
+
+/* region slider item */
+$slider-item-active-text-transition-duration: $animation-duration-base;
+$slider-item-active-text-transition-delay: $animation-delay-xl;
+
+$slider-item-next-text-transition-duration: $animation-duration-base;
+$slider-item-next-text-transition-delay: $animation-delay-xxl;
+
+$slider-item-text-transition-duration: $animation-duration-xxs;
+/* endregion slider item */
