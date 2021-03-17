@@ -178,7 +178,7 @@
   line-height: 1.0418;
   text-transform: uppercase;
   opacity: 0;
-  animation: fade-in $page-header-menu-animation-duration $page-header-menu-animation-delay ease-out forwards;
+  animation: page-header-menu-fade-in $page-header-menu-animation-duration $page-header-menu-animation-delay ease-out forwards;
 
   @media (min-width: $stop-scaling) {
     font-size: 12px;
@@ -307,5 +307,15 @@
   @media (max-width: $mobile) and (orientation: landscape) {
     margin-left: 0;
     width: 100%;
+  }
+}
+
+@keyframes page-header-menu-fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
   }
 }
