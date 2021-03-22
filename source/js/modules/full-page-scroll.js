@@ -49,7 +49,7 @@ export default class FullPageScroll {
     this.screenElements[this.activeScreen].classList.remove(`screen--hidden`);
     timeout = setTimeout(() => {
       this.screenElements[this.activeScreen].classList.add(`active`);
-      timeout.clearTimeout();
+      clearTimeout(timeout);
     }, this.SCREEN_ELEMENT_ACTIVE_DELAY);
   }
 
