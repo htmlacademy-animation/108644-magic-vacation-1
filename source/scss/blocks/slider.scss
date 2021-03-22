@@ -146,7 +146,7 @@
   & .slider__item-text {
     transition: opacity $slider-item-active-text-transition-duration $slider-item-active-text-transition-delay ease-in,
       transform $slider-item-active-text-transition-duration $slider-item-active-text-transition-delay ease-out;
-    transform: translate3d(-5rem, 0, 0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
@@ -154,7 +154,7 @@
   & .slider__item-text {
     transition: opacity $slider-item-next-text-transition-duration $slider-item-next-text-transition-delay ease-in,
       transform $slider-item-next-text-transition-duration $slider-item-next-text-transition-delay ease-out;
-    transform: translate3d(-5rem, 0, 0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
