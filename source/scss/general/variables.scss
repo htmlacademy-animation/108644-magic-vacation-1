@@ -33,8 +33,12 @@ $animation-delay-xxl: 0.5s;
 /* endregion animation timing */
 
 /* region page header */
+$page-header-logo-animation-duration: $animation-duration-xs;
+$page-header-logo-animation-delay: $animation-delay-base;
+
 $page-header-menu-item-active-stripe-duration: $animation-duration-base;
-$page-header-menu-item-active-stripe-delay: $animation-delay-base;
+$page-header-menu-item-hover-stripe-delay: $animation-delay-base;
+$page-header-menu-item-active-stripe-delay: $animation-delay-xxl;
 
 $page-header-menu-animation-duration: $animation-duration-xl;
 $page-header-menu-animation-delay: $animation-delay-xl;
@@ -71,3 +75,8 @@ $slider-item-text-transition-duration: $animation-duration-xxs;
 /* region screen game */
 $screen-game-form-field-animtaion: $animation-duration-xl;
 /* endregion screen game */
+
+/* region footer */
+$screen-footer-animation-duration: $animation-duration-base;
+$screen-footer-animation-delay: $animation-delay-base;
+/* endregion footer */

@@ -29,12 +29,21 @@
 .page-header__logo {
   @include hover;
   position: relative;
-  flex: none;
   top: -0.5rem;
   display: block;
-  padding: 1rem 0;
+  flex: none;
   width: 10rem;
+  padding: 1rem 0;
   color: $c-light;
+  opacity: 0;
+  transition: transform $page-header-logo-animation-duration $page-header-logo-animation-delay cubic-bezier(0.2, 0.6, 0.5, 0.9),
+    opacity $page-header-logo-animation-duration $page-header-logo-animation-delay cubic-bezier(0.2, 0.6, 0.5, 0.8);
+  transform: translate3d(-2rem, 0, 0);
+
+  .body--load-complete & {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
 
   @media (min-width: $stop-scaling) {
     top: -5px;
@@ -178,7 +187,11 @@
   line-height: 1.0418;
   text-transform: uppercase;
   opacity: 0;
-  animation: page-header-menu-fade-in $page-header-menu-animation-duration $page-header-menu-animation-delay forwards;
+  transition: opacity $page-header-menu-animation-duration $page-header-menu-animation-delay cubic-bezier(0.2, 0.6, 0.5, 0.8);
+
+  .body--load-complete & {
+    opacity: 1;
+  }
 
   @media (min-width: $stop-scaling) {
     font-size: 12px;
@@ -242,38 +255,47 @@
 .page-header__menu-item {
   position: relative;
   display: block;
-  color: inherit;
   padding: 0 0.5em 0.5em;
+  color: inherit;
 
   &::after {
     content: "";
     position: absolute;
     bottom: 0;
+    left: 0;
+    display: block;
     width: 100%;
     height: 2px;
     background-color: $c-light;
-    display: block;
-    left: 0;
+    transition: transform $page-header-menu-item-active-stripe-duration $page-header-menu-item-hover-stripe-delay;
     transform: scaleX(0);
     transform-origin: 100% 0 0;
-    transition: transform $page-header-menu-item-active-stripe-duration $page-header-menu-item-active-stripe-delay;
 
     @media (max-width: $tablet) and (orientation: portrait) {
-      left: 0;
       right: 0;
+      left: 0;
       background-color: $c-dark;
     }
 
     @media (max-width: $mobile) and (orientation: landscape) {
-      left: 0;
       right: 0;
+      left: 0;
       background-color: $c-dark;
     }
   }
 
+  .body--load-complete & {
+    &.active {
+      &::after {
+        transition-delay: $page-header-menu-item-active-stripe-delay;
+        transform: scaleX(1);
+        transform-origin: 0 0 0;
+      }
+    }
+  }
+
   &:hover,
-  &:focus,
-  &.active {
+  &:focus {
     &::after {
       transform: scaleX(1);
       transform-origin: 0 0 0;
@@ -286,8 +308,8 @@
     outline: none;
 
     &::after {
-      opacity: 1;
       background-color: $c-purple;
+      opacity: 1;
     }
   }
 }
@@ -307,15 +329,5 @@
   @media (max-width: $mobile) and (orientation: landscape) {
     margin-left: 0;
     width: 100%;
-  }
-}
-
-@keyframes page-header-menu-fade-in {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
   }
 }
