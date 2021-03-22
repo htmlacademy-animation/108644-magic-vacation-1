@@ -97,7 +97,7 @@
   opacity: 0;
   transition: transform $intro-message-animation-duration $intro-message-animation-delay,
     opacity $intro-message-animation-duration $intro-message-animation-delay;
-  transform: translate3d(0, 5rem, 0);
+  transform: translate3d(0, 1.5rem, 0);
 
   .screen--hidden & {
     display: none;
