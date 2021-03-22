@@ -1606,8 +1606,8 @@ img {
   line-height: 1.27;
   text-transform: uppercase;
   opacity: 0;
-  transition: transform 1s 0.5s, opacity 1s 0.5s;
-  transform: translate3d(0, 5rem, 0); }
+  transition: transform 0.5s 0.5s, opacity 0.5s 0.5s;
+  transform: translate3d(0, 1.5rem, 0); }
   .screen--hidden .intro__message {
     display: none; }
   .active .intro__message {
