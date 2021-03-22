@@ -87,6 +87,7 @@
 }
 
 .intro__message {
+  display: block;
   flex: none;
   width: 50.9rem;
   max-width: 50%;
@@ -94,7 +95,18 @@
   line-height: 1.27;
   text-transform: uppercase;
   opacity: 0;
-  animation: intro-message-fade-in $intro-message-animation-duration $intro-message-animation-delay forwards;
+  transition: transform $intro-message-animation-duration $intro-message-animation-delay,
+    opacity $intro-message-animation-duration $intro-message-animation-delay;
+  transform: translate3d(0, 5rem, 0);
+
+  .screen--hidden & {
+    display: none;
+  }
+
+  .active & {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
 
   @media (min-width: $stop-scaling) {
     width: 509px;
@@ -162,17 +174,5 @@
   @media (min-width: $stop-scaling) {
     margin: 0 0 0 -5px;
     font-size: 48px;
-  }
-}
-
-@keyframes intro-message-fade-in {
-  0% {
-    opacity: 0;
-    transform: translate3d(0, 5rem, 0);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
   }
 }
