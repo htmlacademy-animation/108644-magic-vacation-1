@@ -1598,6 +1598,7 @@ img {
       display: none; } }
 
 .intro__message {
+  display: block;
   flex: none;
   width: 50.9rem;
   max-width: 50%;
@@ -1605,7 +1606,13 @@ img {
   line-height: 1.27;
   text-transform: uppercase;
   opacity: 0;
-  animation: intro-message-fade-in 1s 0.5s forwards; }
+  transition: transform 1s 0.5s, opacity 1s 0.5s;
+  transform: translate3d(0, 5rem, 0); }
+  .screen--hidden .intro__message {
+    display: none; }
+  .active .intro__message {
+    opacity: 1;
+    transform: translate3d(0, 0, 0); }
   @media (min-width: 2000px) {
     .intro__message {
       width: 509px;
@@ -1660,14 +1667,6 @@ img {
     .intro__date {
       margin: 0 0 0 -5px;
       font-size: 48px; } }
-
-@keyframes intro-message-fade-in {
-  0% {
-    opacity: 0;
-    transform: translate3d(0, 5rem, 0); }
-  100% {
-    opacity: 1;
-    transform: translate3d(0, 0, 0); } }
 
 .page-header {
   position: fixed;
@@ -3034,11 +3033,11 @@ img {
 
 .swiper-slide-active .slider__item-text {
   transition: opacity 0.3s 0.3s ease-in, transform 0.3s 0.3s ease-out;
-  transform: translate3d(-5rem, 0, 0); }
+  transform: translate3d(0, 0, 0); }
 
 .swiper-slide-next .slider__item-text {
   transition: opacity 0.3s 0.5s ease-in, transform 0.3s 0.5s ease-out;
-  transform: translate3d(-5rem, 0, 0); }
+  transform: translate3d(0, 0, 0); }
 
 .slider__controls {
   position: absolute;
