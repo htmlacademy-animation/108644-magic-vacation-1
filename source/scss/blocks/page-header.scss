@@ -171,12 +171,14 @@
 }
 
 .page-header__menu {
-  font-family: $font-alt;
-  text-transform: uppercase;
+  color: $c-light;
   font-weight: 400;
   font-size: 1.2rem;
+  font-family: $font-alt;
   line-height: 1.0418;
-  color: $c-light;
+  text-transform: uppercase;
+  opacity: 0;
+  animation: page-header-menu-fade-in $page-header-menu-animation-duration $page-header-menu-animation-delay forwards;
 
   @media (min-width: $stop-scaling) {
     font-size: 12px;
@@ -235,51 +237,57 @@
       }
     }
   }
+}
 
-  a {
-    position: relative;
+.page-header__menu-item {
+  position: relative;
+  display: block;
+  color: inherit;
+  padding: 0 0.5em 0.5em;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: $c-light;
     display: block;
-    color: inherit;
-    padding: 0 0.5em 0.5em;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: 100% 0 0;
+    transition: transform $page-header-menu-item-active-stripe-duration $page-header-menu-item-active-stripe-delay;
+
+    @media (max-width: $tablet) and (orientation: portrait) {
+      left: 0;
+      right: 0;
+      background-color: $c-dark;
+    }
+
+    @media (max-width: $mobile) and (orientation: landscape) {
+      left: 0;
+      right: 0;
+      background-color: $c-dark;
+    }
+  }
+
+  &:hover,
+  &:focus,
+  &.active {
+    &::after {
+      transform: scaleX(1);
+      transform-origin: 0 0 0;
+    }
+  }
+
+  &:hover,
+  &:focus {
+    color: $c-purple;
+    outline: none;
 
     &::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      height: 2px;
-      background-color: $c-light;
-      display: none;
-      left: 0;
-
-      @media (max-width: $tablet) and (orientation: portrait) {
-        left: 0;
-        right: 0;
-        background-color: $c-dark;
-      }
-
-      @media (max-width: $mobile) and (orientation: landscape) {
-        left: 0;
-        right: 0;
-        background-color: $c-dark;
-      }
-    }
-
-    &.active {
-      &::after {
-        display: block;
-      }
-    }
-
-    &:hover,
-    &:focus {
-      color: $c-purple;
-      outline: none;
-
-      &::after {
-        opacity: 1;
-        background-color: $c-purple;
-      }
+      opacity: 1;
+      background-color: $c-purple;
     }
   }
 }
@@ -299,5 +307,15 @@
   @media (max-width: $mobile) and (orientation: landscape) {
     margin-left: 0;
     width: 100%;
+  }
+}
+
+@keyframes page-header-menu-fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
   }
 }

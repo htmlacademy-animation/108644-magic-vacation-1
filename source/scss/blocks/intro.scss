@@ -87,12 +87,26 @@
 }
 
 .intro__message {
+  display: block;
   flex: none;
   width: 50.9rem;
   max-width: 50%;
-  text-transform: uppercase;
   font-size: 2.4rem;
   line-height: 1.27;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: transform $intro-message-animation-duration $intro-message-animation-delay,
+    opacity $intro-message-animation-duration $intro-message-animation-delay;
+  transform: translate3d(0, 1.5rem, 0);
+
+  .screen--hidden & {
+    display: none;
+  }
+
+  .active & {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
 
   @media (min-width: $stop-scaling) {
     width: 509px;
