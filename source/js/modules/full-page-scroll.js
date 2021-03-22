@@ -11,6 +11,8 @@ export default class FullPageScroll {
     this.activeScreen = 0;
     this.onScrollHandler = this.onScroll.bind(this);
     this.onUrlHashChengedHandler = this.onUrlHashChanged.bind(this);
+
+    window.addEventListener(`load`, this.onLoad.bind(this));
   }
 
   init() {
@@ -18,6 +20,11 @@ export default class FullPageScroll {
     window.addEventListener(`popstate`, this.onUrlHashChengedHandler);
 
     this.onUrlHashChanged();
+  }
+
+  onLoad() {
+    document.querySelector(`body`).classList.add(`body--load-complete`);
+    window.removeEventListener(`load`, this.onLoad);
   }
 
   onScroll(evt) {
