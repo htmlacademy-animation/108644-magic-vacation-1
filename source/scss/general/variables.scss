@@ -72,6 +72,13 @@ $slider-item-next-text-transition-delay: $animation-delay-xxl;
 $slider-item-text-transition-duration: $animation-duration-xxs;
 /* endregion slider item */
 
+/* region screen prizes */
+$screen-prizes-overlay-transition-duration: $animation-duration-base;
+$screen-prizes-wrapper-transition-duration: $animation-duration-base;
+$screen-prizes-wrapper-transition-delay: $screen-prizes-overlay-transition-duration;
+$screen-prizes-footer-transition-duration: $animation-duration-base;
+/* endregion screen prizes */
+
 /* region screen game */
 $screen-game-form-field-animtaion: $animation-duration-xl;
 /* endregion screen game */
