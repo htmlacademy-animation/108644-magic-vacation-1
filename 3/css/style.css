@@ -2868,50 +2868,38 @@ img {
       .section-prizes .screen__footer-note span.on-prizes {
         display: inline; }
 
-.screen--intro:not(.screen--hidden) ~ .screen--story {
-  display: none; }
-
 .screen--story {
-  display: flex;
   background-color: #5f458c;
   background-image: url("../img/slide1.jpg"), url("../img/slide2.jpg"), url("../img/slide3.jpg"), url("../img/slide4.jpg");
   background-position: center;
   background-size: cover;
-  background-repeat: no-repeat;
-  opacity: 1; }
-  .screen--story.screen--hidden {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    transition: opacity 0s 0.6s; }
+  background-repeat: no-repeat; }
   @media (orientation: portrait) {
     .screen--story {
       background-position: top center, bottom center;
       background-size: auto calc(100vh - 13.8rem), 100% 25rem; } }
 
-.screen--prizes .screen__wrapper {
-  opacity: 0; }
-
-.screen--prizes .screen__overlay {
-  position: absolute;
-  inset: 0;
-  background-color: #5f458c;
-  transition: transform 0.3s ease-in;
-  transform: translateY(100%); }
-
-.screen--prizes .screen__footer {
-  transition: transform 0.3s ease-in;
-  transform: translateY(100%); }
-
-.screen--prizes.active .screen__overlay {
-  transform: translateY(0%); }
-
-.screen--prizes.active .screen__wrapper {
-  opacity: 1;
-  transition: opacity 0.3s 0.3s ease-in; }
-
-.screen--prizes.active .screen__footer {
-  transform: translateY(0%); }
+.screen--prizes {
+  z-index: 2;
+  /* should be upper, than previous section */ }
+  .screen--prizes .screen__wrapper {
+    opacity: 0; }
+  .screen--prizes .screen__overlay {
+    position: absolute;
+    inset: 0;
+    background-color: #5f458c;
+    transition: transform 0.3s ease-in;
+    transform: translateY(100%); }
+  .screen--prizes .screen__footer {
+    transition: transform 0.3s ease-in;
+    transform: translateY(100%); }
+  .screen--prizes.active .screen__overlay {
+    transform: translateY(0%); }
+  .screen--prizes.active .screen__wrapper {
+    opacity: 1;
+    transition: opacity 0.3s 0.3s ease-in; }
+  .screen--prizes.active .screen__footer {
+    transform: translateY(0%); }
 
 .screen--game {
   position: relative;
