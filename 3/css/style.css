@@ -2888,18 +2888,22 @@ img {
     position: absolute;
     inset: 0;
     background-color: #5f458c;
-    transition: transform 0.3s ease-in;
     transform: translateY(100%); }
   .screen--prizes .screen__footer {
-    transition: transform 0.3s ease-in;
     transform: translateY(100%); }
   .screen--prizes.active .screen__overlay {
     transform: translateY(0%); }
   .screen--prizes.active .screen__wrapper {
-    opacity: 1;
-    transition: opacity 0.3s 0.3s ease-in; }
+    opacity: 1; }
   .screen--prizes.active .screen__footer {
+    transition: none;
     transform: translateY(0%); }
+  .screen--prizes.animation .screen__overlay {
+    transition: transform 0.3s ease-in; }
+  .screen--prizes.animation .screen__wrapper {
+    transition: opacity 0.3s 0.3s ease-in; }
+  .screen--prizes.animation .screen__footer {
+    transition: transform 0.3s ease-in; }
 
 .screen--game {
   position: relative;
