@@ -3,6 +3,7 @@ import throttle from 'lodash/throttle';
 export default class FullPageScroll {
   constructor() {
     this.THROTTLE_TIMEOUT = 2000;
+    this.SECTION_PRIZE_DELAY = 2000;
     this.SCREEN_ELEMENT_ACTIVE_DELAY = 100;
 
     this.screenElements = document.querySelectorAll(`.screen:not(.screen--result)`);
@@ -47,13 +48,42 @@ export default class FullPageScroll {
     this.emitChangeDisplayEvent();
   }
 
+  hideSection() {
+    const hideSectionTimer = setTimeout(() => {
+      this.screenElements.forEach((screen, index) => {
+        if (index === this.activeScreen) {
+          return;
+        }
+
+        screen.removeAttribute(`style`);
+        screen.classList.add(`screen--hidden`);
+        screen.classList.remove(`active`);
+        screen.classList.remove(`animation`);
+      });
+      clearTimeout(hideSectionTimer);
+    }, this.SCREEN_ELEMENT_ACTIVE_DELAY);
+  }
+
+  activationPrizeSection() {
+    this.screenElements[this.activeScreen].classList.add(`animation`);
+    const prizeSectionDelayTimeout = setTimeout(() => {
+      this.hideSection();
+      clearTimeout(prizeSectionDelayTimeout);
+    }, this.SECTION_PRIZE_DELAY);
+  }
+
   changeVisibilityDisplay() {
     let timeout;
-    this.screenElements.forEach((screen) => {
-      screen.classList.add(`screen--hidden`);
-      screen.classList.remove(`active`);
-    });
+    const isPrizeSectionActive = this.screenElements[this.activeScreen].getAttribute(`id`) === `prizes`;
+    const prevSectionActive = document.querySelector(`.screen.active`);
+    if (isPrizeSectionActive && prevSectionActive && prevSectionActive.getAttribute(`id`) === `story`) {
+      this.activationPrizeSection();
+    } else {
+      this.hideSection();
+    }
+
     this.screenElements[this.activeScreen].classList.remove(`screen--hidden`);
+    this.screenElements[this.activeScreen].setAttribute(`style`, `position: absolute; inset: 0;`);
     timeout = setTimeout(() => {
       this.screenElements[this.activeScreen].classList.add(`active`);
       clearTimeout(timeout);
