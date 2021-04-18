@@ -49,25 +49,35 @@ export default class FullPageScroll {
   }
 
   hideSection() {
-    this.screenElements.forEach((screen, index) => {
-      if (index === this.activeScreen) {
-        return;
-      }
+    const hideSectionTimer = setTimeout(() => {
+      this.screenElements.forEach((screen, index) => {
+        if (index === this.activeScreen) {
+          return;
+        }
 
-      screen.removeAttribute(`style`);
-      screen.classList.add(`screen--hidden`);
-      screen.classList.remove(`active`);
-    });
+        screen.removeAttribute(`style`);
+        screen.classList.add(`screen--hidden`);
+        screen.classList.remove(`active`);
+        screen.classList.remove(`animation`);
+      });
+      clearTimeout(hideSectionTimer);
+    }, this.SCREEN_ELEMENT_ACTIVE_DELAY);
+  }
+
+  activationPrizeSection() {
+    this.screenElements[this.activeScreen].classList.add(`animation`);
+    const prizeSectionDelayTimeout = setTimeout(() => {
+      this.hideSection();
+      clearTimeout(prizeSectionDelayTimeout);
+    }, this.SECTION_PRIZE_DELAY);
   }
 
   changeVisibilityDisplay() {
     let timeout;
     const isPrizeSectionActive = this.screenElements[this.activeScreen].getAttribute(`id`) === `prizes`;
-    if (isPrizeSectionActive) {
-      const prizeSectionDelayTimeout = setTimeout(() => {
-        this.hideSection();
-        clearTimeout(prizeSectionDelayTimeout);
-      }, this.SECTION_PRIZE_DELAY);
+    const prevSectionActive = document.querySelector(`.screen.active`);
+    if (isPrizeSectionActive && prevSectionActive && prevSectionActive.getAttribute(`id`) === `story`) {
+      this.activationPrizeSection();
     } else {
       this.hideSection();
     }

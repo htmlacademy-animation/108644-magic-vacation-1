@@ -318,12 +318,10 @@
     position: absolute;
     inset: 0;
     background-color: $c-dark;
-    transition: transform $screen-prizes-overlay-transition-duration ease-in;
     transform: translateY(100%);
   }
 
   & .screen__footer {
-    transition: transform $screen-prizes-footer-transition-duration ease-in;
     transform: translateY(100%);
   }
 
@@ -334,11 +332,25 @@
 
     & .screen__wrapper {
       opacity: 1;
+    }
+
+    & .screen__footer {
+      transition: none;
+      transform: translateY(0%);
+    }
+  }
+
+  &.animation {
+    & .screen__overlay {
+      transition: transform $screen-prizes-overlay-transition-duration ease-in;
+    }
+
+    & .screen__wrapper {
       transition: opacity $screen-prizes-wrapper-transition-duration $screen-prizes-wrapper-transition-delay ease-in;
     }
 
     & .screen__footer {
-      transform: translateY(0%);
+      transition: transform $screen-prizes-footer-transition-duration ease-in;
     }
   }
 }
