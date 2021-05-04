@@ -4,8 +4,6 @@
   "description": "Личный проект «Таинственный отпуск» от HTML Academy",
   "devDependencies": {
     "@htmlacademy/editorconfig-cli": "1.x",
-    "autoprefixer": "10.2.5",
-    "concurrently": "5.1.0",
     "copy-webpack-plugin": "5.1.1",
     "css-loader": "3.5.1",
     "csso-webpack-plugin": "2.0.0-beta.1",
@@ -20,14 +18,11 @@
     "html-webpack-plugin": "4.2.0",
     "lodash": "4.17.15",
     "mini-css-extract-plugin": "0.9.0",
-    "node-sass": "4.13.1",
-    "pixel-glass": "1.0.13",
-    "postcss": "8.2.7",
-    "postcss-loader": "5.1.0",
     "posthtml": "0.12.0",
     "posthtml-include": "1.2.0",
     "posthtml-loader": "1.0.2",
     "posthtml-parser": "0.4.2",
+    "sass": "1.32.8",
     "sass-loader": "8.0.2",
     "style-loader": "1.1.3",
     "stylelint": "9.10.x",
@@ -40,7 +35,6 @@
   "scripts": {
     "editorconfig": "editorconfig-cli",
     "stylelint": "stylelint \"source/sass/**/*.scss\" --syntax scss",
-    "stylelint:fix": "stylelint \"source/scss//*.scss\"  --fix",
     "test": "npm run editorconfig && npm run stylelint && eslint source/js/",
     "build": "webpack",
     "webp": "gulp webp",
@@ -59,13 +53,8 @@
     "source/img/**/*.svg",
     "source/sass/**/*.{sass,scss}"
   ],
-  "engines": {
-    "node": "8.15"
-  },
   "dependencies": {
     "normalize.css": "8.0.1",
-    "stylelint-order": "^4.1.0",
-    "stylelint-scss": "^3.19.0",
     "swiper": "5.3.8",
     "three": "0.115.0"
   }
